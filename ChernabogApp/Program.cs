@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ChernabogAppContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ChernabogAppContext") ?? throw new InvalidOperationException("Connection string 'ChernabogAppContext' not found.")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ChernabogAppContext") ?? throw new InvalidOperationException("Connection string 'ChernabogAppContext' not found.")));
 
 var app = builder.Build();
 
