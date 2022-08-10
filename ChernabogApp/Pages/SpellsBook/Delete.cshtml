@@ -1,0 +1,57 @@
+﻿@page
+@model ChernabogApp.Pages.SpellsBook.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить заклинание";
+}
+
+<h1>Удалить "@Html.DisplayFor(model => model.Spell.Name)"</h1>
+
+<h3>Вы уверены, что хотите удалить заклинание из книги?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Level)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Level)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Kind)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Kind)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Sphere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Sphere)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Points)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Points)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Description)
+        </dd>
+    </dl>
+    
+    <form method="post" class="d-flex flex-row justify-content-between">
+        <input type="hidden" asp-for="Spell.Id" />
+        <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+        <input type="submit" value="Удалить" class="btn btn-danger rounded-end" />
+    </form>
+</div>

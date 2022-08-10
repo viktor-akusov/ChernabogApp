@@ -1,0 +1,88 @@
+﻿@page
+@model ChernabogApp.Pages.SpellsBook.EditModel
+
+@{
+    ViewData["Title"] = "Редактировать заклинание";
+}
+
+<h1>Редактировать заклинание</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Spell.Id" />
+            <div class="form-group">
+                <label asp-for="Spell.Name" class="control-label"></label>
+                <input asp-for="Spell.Name" class="form-control" />
+                <span asp-validation-for="Spell.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Level" class="control-label"></label>
+                <select asp-for="Spell.Level" class="form-control">
+                    <option value=0>Младшее</option>
+                    <option value=1>Старшее</option>
+                    <option value=2>Великое</option>
+                    <option value=3>Легендарное</option>
+                </select>
+                <span asp-validation-for="Spell.Level" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Kind" class="control-label"></label>
+                <select asp-for="Spell.Kind" class="form-control">
+                    <option value=0>Колдовское</option>
+                    <option value=1>Жреческое</option>
+                </select>
+                <span asp-validation-for="Spell.Kind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Sphere" class="control-label"></label>
+                <select asp-for="Spell.Sphere" class="form-control">
+                    <option value=0>---</option>
+                    <option value=1>Исцеления</option>
+                    <option value=2>Смерти</option>
+                    <option value=3>Животных</option>
+                    <option value=4>Страсти</option>
+                    <option value=5>Духов</option>
+                    <option value=6>Солнца</option>
+                    <option value=7>Войны</option>
+                    <option value=8>Воды</option>
+                </select>
+                <span asp-validation-for="Spell.Sphere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Time" class="control-label"></label>
+                <select asp-for="Spell.Time" class="form-control">
+                    <option value=0>Мгновенно</option>
+                    <option value=1>Основное действие</option>
+                    <option value=2>На ходу</option>
+                    <option value=3>5 минут</option>
+                    <option value=4>10 минут</option>
+                    <option value=5>1 час</option>
+                    <option value=6>6 часов</option>
+                    <option value=7>1 день</option>
+                </select>
+                <span asp-validation-for="Spell.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Points" class="control-label"></label>
+                <input asp-for="Spell.Points" class="form-control" />
+                <span asp-validation-for="Spell.Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spell.Description" class="control-label"></label>
+                <textarea asp-for="Spell.Description" class="form-control"></textarea>
+                <span asp-validation-for="Spell.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex flex-row justify-content-between pt-2 align-content-stretch">
+                <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

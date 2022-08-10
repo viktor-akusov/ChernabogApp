@@ -1,0 +1,57 @@
+﻿@page
+@model ChernabogApp.Pages.SpellsBook.DetailsModel
+
+@{
+    ViewData["Title"] = "Заклинание - " + Model.Spell.Name.ToString();
+}
+
+<div>
+    <h4>Заклинание - @Html.DisplayFor(model => model.Spell.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Level)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Level)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Kind)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Kind)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Sphere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Sphere)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Points)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Points)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spell.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spell.Description)
+        </dd>
+    </dl>
+</div>
+<div class="d-flex flex-row justify-content-left gap-2">
+    <a asp-page="./Index">
+        <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <a asp-page="./Edit" asp-route-id="@Model.Spell?.Id">
+        <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>
+    </a>
+</div>
