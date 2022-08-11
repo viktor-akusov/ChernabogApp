@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Администрирование";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-hover">
+    <thead class="table-dark sticky-top">
+        <tr>
+            <th class="rounded-start">
+                Имя пользователя
+            </th>
+            <th>
+                Электронная почта
+            </th>
+            <th>
+                Роли
+            </th>
+            <th class="rounded-end"></th>
+        </tr>
+    </thead>
+@foreach (var item in Model.model) 
+{
+    <tr>
+       <td>@item.UserName</td>
+       <td>@item.Email</td>
+       <td>
+            @foreach (var role in item.Roles)
+            {
+                @role
+            }
+       </td>
+        <td class="align-end">
+            <a asp-page="./Edit" asp-route-id="@item.UserName" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
+            <a asp-page="./Delete" asp-route-id="@item.UserName" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+        </td>
+    </tr>
+}
+</table>

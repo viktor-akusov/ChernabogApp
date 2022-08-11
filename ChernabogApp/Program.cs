@@ -9,7 +9,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ChernabogAppContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ChernabogAppContext") ?? throw new InvalidOperationException("Connection string 'ChernabogAppContext' not found.")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ChernabogAppContext>();
 
 var app = builder.Build();
