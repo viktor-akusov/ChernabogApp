@@ -24,7 +24,7 @@ namespace ChernabogApp.Pages.SpellsBook
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Spell == null)
+            if (!User.Identity.IsAuthenticated || id == null || _context.Spell == null)
             {
                 return NotFound();
             }

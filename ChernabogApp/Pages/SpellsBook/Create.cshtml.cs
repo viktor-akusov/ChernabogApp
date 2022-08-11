@@ -21,6 +21,10 @@ namespace ChernabogApp.Pages.SpellsBook
 
         public IActionResult OnGet()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return NotFound();
+            }
             return Page();
         }
 

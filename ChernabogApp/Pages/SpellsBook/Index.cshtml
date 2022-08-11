@@ -117,7 +117,9 @@
                     }
                 </a>
             </th>
-            <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+            @if (User.Identity.IsAuthenticated) {
+                <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -144,10 +146,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Points)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
-            </td>
+            @if (User.Identity.IsAuthenticated) {
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                </td>
+            }
         </tr>
 }
     </tbody>

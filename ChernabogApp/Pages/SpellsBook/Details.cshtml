@@ -51,7 +51,10 @@
     <a asp-page="./Index">
         <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
     </a>
-    <a asp-page="./Edit" asp-route-id="@Model.Spell?.Id">
-        <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>
-    </a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Spell?.Id">
+            <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>
+        </a>
+    }
 </div>

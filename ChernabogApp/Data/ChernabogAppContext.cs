@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ChernabogApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ChernabogApp.Data
 {
-    public class ChernabogAppContext : DbContext
+    public class ChernabogAppContext : IdentityDbContext<IdentityUser>
     {
         public ChernabogAppContext (DbContextOptions<ChernabogAppContext> options)
             : base(options)

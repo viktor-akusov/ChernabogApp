@@ -27,4 +27,9 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\qrcode.js" />
+    <None Include="wwwroot\lib\qrcode.min.js" />
+  </ItemGroup>
+
 </Project>
