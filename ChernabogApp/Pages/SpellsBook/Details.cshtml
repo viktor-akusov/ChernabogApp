@@ -51,7 +51,7 @@
     <a asp-page="./Index">
         <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
     </a>
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
     {
         <a asp-page="./Edit" asp-route-id="@Model.Spell?.Id">
             <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>

@@ -104,7 +104,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Spell[0].Time)
                 </th>
-                <th class="@(@User.IsInRole("Admin") ? null : "rounded-end")">
+                <th class="@(User.IsInRole("Admin") || User.IsInRole("Editor") ? null : "rounded-end")">
                     @Html.DisplayNameFor(model => model.Spell[0].Points)
                     <a asp-page="./Index" 
                         asp-route-sortOrder="@Model.PointsSort" 
@@ -125,7 +125,7 @@
                         }
                     </a>
                 </th>
-                @if (User.IsInRole("Admin")) {
+                @if (User.IsInRole("Admin") || User.IsInRole("Editor")) {
                     <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
                 }
             </tr>
@@ -154,7 +154,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Points)
                 </td>
-                @if (User.IsInRole("Admin")) {
+                @if (User.IsInRole("Admin") || User.IsInRole("Editor")) {
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>

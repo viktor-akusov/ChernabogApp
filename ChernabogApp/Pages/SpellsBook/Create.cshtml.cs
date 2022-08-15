@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ChernabogApp.Pages.SpellsBook
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Editor")]
     public class CreateModel : PageModel
     {
         private readonly ChernabogApp.Data.ChernabogAppContext _context;
