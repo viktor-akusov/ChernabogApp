@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ChernabogApp.Migrations
 {
-    public partial class IdentityAdded : Migration
+    public partial class InitSetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,38 @@ namespace ChernabogApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MonsterCategory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MonsterCategory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Spell",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Level = table.Column<int>(type: "integer", nullable: false),
+                    Kind = table.Column<int>(type: "integer", nullable: false),
+                    Sphere = table.Column<int>(type: "integer", nullable: false),
+                    Time = table.Column<int>(type: "integer", nullable: false),
+                    Points = table.Column<byte>(type: "smallint", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Spell", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -155,6 +187,36 @@ namespace ChernabogApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Monster",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    MinimalHitDice = table.Column<long>(type: "bigint", nullable: false),
+                    MaximalHitDice = table.Column<long>(type: "bigint", nullable: false),
+                    ArmorClass = table.Column<long>(type: "bigint", nullable: false),
+                    SaveRoll = table.Column<long>(type: "bigint", nullable: false),
+                    Skill = table.Column<long>(type: "bigint", nullable: false),
+                    Motion = table.Column<long>(type: "bigint", nullable: false),
+                    BattleSpirit = table.Column<long>(type: "bigint", nullable: false),
+                    Attack = table.Column<string>(type: "text", nullable: false),
+                    Damage = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Monster", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Monster_MonsterCategory_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "MonsterCategory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +253,11 @@ namespace ChernabogApp.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Monster_CategoryId",
+                table: "Monster",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +278,19 @@ namespace ChernabogApp.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Monster");
+
+            migrationBuilder.DropTable(
+                name: "Spell");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "MonsterCategory");
         }
     }
 }

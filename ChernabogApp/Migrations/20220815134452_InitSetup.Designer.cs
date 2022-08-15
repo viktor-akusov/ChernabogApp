@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChernabogApp.Migrations
 {
     [DbContext(typeof(ChernabogAppContext))]
-    [Migration("20220811063553_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20220815134452_InitSetup")]
+    partial class InitSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,78 @@ namespace ChernabogApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ChernabogApp.Models.Monster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ArmorClass")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Attack")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("BattleSpirit")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Damage")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("MaximalHitDice")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("MinimalHitDice")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Motion")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<long>("SaveRoll")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Skill")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Monster");
+                });
+
+            modelBuilder.Entity("ChernabogApp.Models.MonsterCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MonsterCategory");
+                });
 
             modelBuilder.Entity("ChernabogApp.Models.Spell", b =>
                 {
@@ -258,6 +330,17 @@ namespace ChernabogApp.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ChernabogApp.Models.Monster", b =>
+                {
+                    b.HasOne("ChernabogApp.Models.MonsterCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

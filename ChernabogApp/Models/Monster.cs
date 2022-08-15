@@ -8,6 +8,7 @@ namespace ChernabogApp.Models
         [Key]
         public uint Id { get; set; }
         [DisplayName("Категория")]
+        public int CategoryId { get; set; }
         public MonsterCategory? Category { get; set; }
         [Required]
         [DisplayName("Название")]
