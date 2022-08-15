@@ -18,141 +18,150 @@
     </div>
     <div class="form-actions">
         <p class="d-flex p-2 flex-row">
-            <label for="spellLevel" class="p-2">Уровень: </label>
-            <select id="spellLevel" name="spellLevel" asp-for="SpellLevelFilter">
-                <option value="">---</option>
-                <option value="Minor">Младшие</option>
-                <option value="Senior">Старшие</option>
-                <option value="Great">Великие</option>
-                <option value="Legendary">Легендарные</option>
-            </select>
-            <label for="spellKind" class="p-2">Вид: </label>
-            <select id="spellKind" name="spellKind" asp-for="SpellKindFilter">
-                <option value="">---</option>
-                <option value="Wizard">Колдовские</option>
-                <option value="Cleric">Жреческие</option>
-            </select>
-            <label for="spellSphere" class="p-2">Сфера: </label>
-            <select id="spellSphere" name="spellSphere" asp-for="SpellSphereFilter">
-                <option value="">---</option>
-                <option value="Healing">Исцеления</option>
-                <option value="Death">Смерти</option>
-                <option value="Animals">Животных</option>
-                <option value="Passion">Страсти</option>
-                <option value="Spirits">Духов</option>
-                <option value="Sun">Солнца</option>
-                <option value="War">Войны</option>
-                <option value="Water">Воды</option>
-            </select>
-            <label for="spellTime" class="p-2">Время: </label>
-            <select id="spellTime" name="spellTime" asp-for="SpellTimeFilter">
-                <option value="">---</option>
-                <option value="Instant">Мгновенно</option>
-                <option value="MainAction">Основное действие</option>
-                <option value="Running">На ходу</option>
-                <option value="FiveMinutes">5 минут</option>
-                <option value="TenMinutes">10 минут</option>
-                <option value="OneHour">1 час</option>
-                <option value="SixHours">6 часов</option>
-                <option value="OneDay">1 день</option>
-            </select>
+            <div style="width: fit-content; display: inline">
+                <label for="spellLevel" class="p-2">Уровень: </label>
+                <select id="spellLevel" name="spellLevel" asp-for="SpellLevelFilter">
+                    <option value="">---</option>
+                    <option value="Minor">Младшие</option>
+                    <option value="Senior">Старшие</option>
+                    <option value="Great">Великие</option>
+                    <option value="Legendary">Легендарные</option>
+                </select>
+            </div>
+            <div style="width: fit-content; display: inline">
+                <label for="spellKind" class="p-2">Вид: </label>
+                <select id="spellKind" name="spellKind" asp-for="SpellKindFilter">
+                    <option value="">---</option>
+                    <option value="Wizard">Колдовские</option>
+                    <option value="Cleric">Жреческие</option>
+                </select>
+            </div>
+            <div style="width: fit-content; display: inline">
+                <label for="spellSphere" class="p-2">Сфера: </label>
+                <select id="spellSphere" name="spellSphere" asp-for="SpellSphereFilter">
+                    <option value="">---</option>
+                    <option value="Healing">Исцеления</option>
+                    <option value="Death">Смерти</option>
+                    <option value="Animals">Животных</option>
+                    <option value="Passion">Страсти</option>
+                    <option value="Spirits">Духов</option>
+                    <option value="Sun">Солнца</option>
+                    <option value="War">Войны</option>
+                    <option value="Water">Воды</option>
+                </select>
+            </div>
+            <div style="width: fit-content; display: inline">
+                <label for="spellTime" class="p-2">Время: </label>
+                <select id="spellTime" name="spellTime" asp-for="SpellTimeFilter">
+                    <option value="">---</option>
+                    <option value="Instant">Мгновенно</option>
+                    <option value="MainAction">Основное действие</option>
+                    <option value="Running">На ходу</option>
+                    <option value="FiveMinutes">5 минут</option>
+                    <option value="TenMinutes">10 минут</option>
+                    <option value="OneHour">1 час</option>
+                    <option value="SixHours">6 часов</option>
+                    <option value="OneDay">1 день</option>
+                </select>
+            </div>
         </p>
     </div>
 </form>
-
-<table class="table table-hover">
-    <thead class="table-dark sticky-top">
-        <tr>
-            <th class="rounded-start">
-                @Html.DisplayNameFor(model => model.Spell[0].Name)
-                <a asp-page="./Index" 
-                    asp-route-sortOrder="@Model.NameSort" 
-                    asp-route-searchString="@Model.CurrentFilter"
-                    asp-route-spellKind="@Model.SpellKindFilter"
-                    asp-route-spellSphere="@Model.SpellSphereFilter"
-                    asp-route-spellLevel="@Model.SpellLevelFilter"
-                    asp-route-spellTime="@Model.SpellTimeFilter"
-                    class="link-light">
-                    @if(@Model.SortOrder=="name_desc") {
-                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                    } else if (@Model.SortOrder=="name_asc")
-                    {
-                        <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                    } else
-                    {
-                        <i class="fa fa-sort" aria-hidden="true"></i>
-                    }
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Spell[0].Level)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Spell[0].Kind)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Spell[0].Sphere)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Spell[0].Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Spell[0].Points)
-                <a asp-page="./Index" 
-                    asp-route-sortOrder="@Model.PointsSort" 
-                    asp-route-searchString="@Model.CurrentFilter"
-                    asp-route-spellKind="@Model.SpellKindFilter"
-                    asp-route-spellSphere="@Model.SpellSphereFilter"
-                    asp-route-spellLevel="@Model.SpellLevelFilter"
-                    asp-route-spellTime="@Model.SpellTimeFilter"
-                    class="link-light">
-                    @if(@Model.SortOrder=="points_desc") {
-                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
-                    } else if (@Model.SortOrder=="points_asc")
-                    {
-                        <i class="fa fa-sort-asc" aria-hidden="true"></i>
-                    } else
-                    {
-                        <i class="fa fa-sort" aria-hidden="true"></i>
-                    }
-                </a>
-            </th>
-            @if (User.Identity.IsAuthenticated) {
-                <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Spell) {
-        <tr>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-dark sticky-top">
+            <tr>
+                <th class="rounded-start">
+                    @Html.DisplayNameFor(model => model.Spell[0].Name)
+                    <a asp-page="./Index" 
+                        asp-route-sortOrder="@Model.NameSort" 
+                        asp-route-searchString="@Model.CurrentFilter"
+                        asp-route-spellKind="@Model.SpellKindFilter"
+                        asp-route-spellSphere="@Model.SpellSphereFilter"
+                        asp-route-spellLevel="@Model.SpellLevelFilter"
+                        asp-route-spellTime="@Model.SpellTimeFilter"
+                        class="link-light">
+                        @if(@Model.SortOrder=="name_desc") {
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        } else if (@Model.SortOrder=="name_asc")
+                        {
+                            <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                        } else
+                        {
+                            <i class="fa fa-sort" aria-hidden="true"></i>
+                        }
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Spell[0].Level)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Spell[0].Kind)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Spell[0].Sphere)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Spell[0].Time)
+                </th>
+                <th class="@(@User.IsInRole("Admin") ? null : "rounded-end")">
+                    @Html.DisplayNameFor(model => model.Spell[0].Points)
+                    <a asp-page="./Index" 
+                        asp-route-sortOrder="@Model.PointsSort" 
+                        asp-route-searchString="@Model.CurrentFilter"
+                        asp-route-spellKind="@Model.SpellKindFilter"
+                        asp-route-spellSphere="@Model.SpellSphereFilter"
+                        asp-route-spellLevel="@Model.SpellLevelFilter"
+                        asp-route-spellTime="@Model.SpellTimeFilter"
+                        class="link-light">
+                        @if(@Model.SortOrder=="points_desc") {
+                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        } else if (@Model.SortOrder=="points_asc")
+                        {
+                            <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                        } else
+                        {
+                            <i class="fa fa-sort" aria-hidden="true"></i>
+                        }
+                    </a>
+                </th>
+                @if (User.IsInRole("Admin")) {
+                    <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Spell) {
+            <tr>
             
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.Id" class="nav-link">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kind)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sphere)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Points)
-            </td>
-            @if (User.Identity.IsAuthenticated) {
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="nav-link">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
                 </td>
-            }
-        </tr>
-}
-    </tbody>
-</table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kind)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sphere)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Points)
+                </td>
+                @if (User.IsInRole("Admin")) {
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                    </td>
+                }
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

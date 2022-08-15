@@ -7,18 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ChernabogApp.Data;
 using ChernabogApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ChernabogApp.Pages.SpellsBook
 {
     public class IndexModel : PageModel
     {
         private readonly ChernabogApp.Data.ChernabogAppContext _context;
-
-        public IndexModel(ChernabogApp.Data.ChernabogAppContext context)
-        {
-            _context = context;
-        }
-
         public string NameSort { get; set; }
         public string PointsSort { get; set; }
         public string SortOrder { get; set; }
@@ -32,7 +27,20 @@ namespace ChernabogApp.Pages.SpellsBook
 
         public string SpellTimeFilter { get; set; }
 
-        public IList<Spell> Spell { get;set; } = default!;
+        public IList<Spell> Spell { get; set; } = default!;
+
+        public IndexModel(ChernabogApp.Data.ChernabogAppContext context)
+        {
+            _context = context;
+            NameSort = "name_asc";
+            PointsSort = "points_asc";
+            CurrentFilter = "";
+            SpellLevelFilter = "";
+            SpellKindFilter = "";
+            SortOrder = "name_asc";
+            SpellSphereFilter = "";
+            SpellTimeFilter = "";
+        }
 
         public async Task OnGetAsync(string sortOrder, string searchString, string spellLevel, string spellKind, string spellSphere, string spellTime)
         {

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ChernabogApp.Data;
 using ChernabogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ChernabogApp.Pages.SpellsBook
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly ChernabogApp.Data.ChernabogAppContext _context;
@@ -24,10 +26,6 @@ namespace ChernabogApp.Pages.SpellsBook
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (!User.Identity.IsAuthenticated || id == null || _context.Spell == null)
-            {
-                return NotFound();
-            }
 
             var spell = await _context.Spell.FirstOrDefaultAsync(m => m.Id == id);
 
