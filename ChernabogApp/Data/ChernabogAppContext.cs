@@ -18,5 +18,9 @@ namespace ChernabogApp.Data
 
         public DbSet<ChernabogApp.Models.Spell> Spell { get; set; } = default!;
 
+        public DbSet<ChernabogApp.Models.Monster>? Monster { get; set; }
+
+        public DbSet<ChernabogApp.Models.MonsterCategory>? MonsterCategory { get; set; }
+
     }
 }

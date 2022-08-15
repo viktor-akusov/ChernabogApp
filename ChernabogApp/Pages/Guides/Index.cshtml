@@ -6,10 +6,19 @@
 
 <h1>@ViewData["Title"]</h1>
 <hr />
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Книга заклинаний</h5>
-    <p class="card-text">Сборник жреческих и колдовских заклинаний с сортировкой по уровням, типам, сферам и времени сотворения.</p>
-    <a asp-page="/Guides/SpellsBook/Index" class="btn btn-primary">Читать</a>
-  </div>
+<div class="d-flex flex-row flex-wrap gap-2">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Книга заклинаний</h5>
+        <p class="card-text">Сборник жреческих и колдовских заклинаний с сортировкой по уровням, типам, сферам и времени сотворения.</p>
+        <a asp-page="/Guides/SpellsBook/Index" class="btn btn-primary align-bottom">Читать</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Бестиарий</h5>
+        <p class="card-text">Описания различных существ. От людей и зверей до порождений Бездны и богов.</p>
+        <a asp-page="/Guides/Bestiary/Index" class="btn btn-primary align-bottom">Читать</a>
+      </div>
+    </div>
 </div>

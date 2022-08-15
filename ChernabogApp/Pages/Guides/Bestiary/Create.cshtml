@@ -1,0 +1,81 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Bestiary.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить новое существо";
+}
+
+<h1>Добавить новое существо</h1>
+
+<h4>Существо</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Monster.Name" class="control-label"></label>
+                <input asp-for="Monster.Name" class="form-control" />
+                <span asp-validation-for="Monster.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.MinimalHitDice" class="control-label"></label>
+                <input asp-for="Monster.MinimalHitDice" class="form-control" />
+                <span asp-validation-for="Monster.MinimalHitDice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.MaximalHitDice" class="control-label"></label>
+                <input asp-for="Monster.MaximalHitDice" class="form-control" />
+                <span asp-validation-for="Monster.MaximalHitDice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.ArmorClass" class="control-label"></label>
+                <input asp-for="Monster.ArmorClass" class="form-control" />
+                <span asp-validation-for="Monster.ArmorClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.SaveRoll" class="control-label"></label>
+                <input asp-for="Monster.SaveRoll" class="form-control" />
+                <span asp-validation-for="Monster.SaveRoll" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Skill" class="control-label"></label>
+                <input asp-for="Monster.Skill" class="form-control" />
+                <span asp-validation-for="Monster.Skill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Motion" class="control-label"></label>
+                <input asp-for="Monster.Motion" class="form-control" />
+                <span asp-validation-for="Monster.Motion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.BattleSpirit" class="control-label"></label>
+                <input asp-for="Monster.BattleSpirit" class="form-control" />
+                <span asp-validation-for="Monster.BattleSpirit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Attack" class="control-label"></label>
+                <input asp-for="Monster.Attack" class="form-control" />
+                <span asp-validation-for="Monster.Attack" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Damage" class="control-label"></label>
+                <input asp-for="Monster.Damage" class="form-control" />
+                <span asp-validation-for="Monster.Damage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Description" class="control-label"></label>
+                <textarea asp-for="Monster.Description" class="form-control"></textarea>
+                <span asp-validation-for="Monster.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex flex-row justify-content-between pt-2 align-content-stretch">
+                <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

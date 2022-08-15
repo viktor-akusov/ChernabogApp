@@ -1,0 +1,90 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Bestiary.DetailsModel
+
+@{
+    ViewData["Title"] = "Существо - " + Model.Monster.Name.ToString();
+}
+
+<div>
+    <h4>Существо - @Html.DisplayFor(model => model.Monster.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Кость здоровья
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Monster.MinimalHitDice != Model.Monster.MaximalHitDice)
+            {
+                <p>@Html.DisplayFor(model => model.Monster.MinimalHitDice) - @Html.DisplayFor(model => model.Monster.MaximalHitDice)</p>
+            } else
+            {
+                @Html.DisplayFor(model => model.Monster.MaximalHitDice)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.ArmorClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.ArmorClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.SaveRoll)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.SaveRoll)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Skill)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Skill)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Motion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Motion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.BattleSpirit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.BattleSpirit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Attack)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Attack)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Damage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Damage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Monster.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Monster.Description)
+        </dd>
+    </dl>
+</div>
+<div class="d-flex flex-row justify-content-left gap-2">
+    <a asp-page="./Index">
+        <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Monster?.Id">
+            <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>
+        </a>
+    }
+</div>
