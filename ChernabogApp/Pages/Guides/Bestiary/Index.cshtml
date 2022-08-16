@@ -11,6 +11,26 @@
         Редактировать категории существ
     </a>
 </div>
+<form asp-page="./Index" method="get">
+    <div id="search-form" class="form-actions no-color">
+        <p class="d-flex p-2 flex-row">
+            <input type="text" name="searchString" value="@Model.CurrentFilter" class="flex-grow-1 rounded-start"/>
+            <button type="submit" class="btn-dark rounded-end">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </p>
+    </div>
+    <div class="form-actions">
+        <p class="d-flex p-2 flex-row">
+            <div style="width: fit-content; display: inline">
+                <label for="spellLevel" class="p-2">Категория: </label>
+                <select id="spellLevel" name="spellLevel" asp-items="Model.Categories" asp-for="SelectedCategory" name="categoryId">
+                    <option value="">---</option>
+                </select>
+            </div>
+        </p>
+    </div>
+</form>
 <table class="table table-hover">
     <thead class="table-dark sticky-top">
         <tr>
