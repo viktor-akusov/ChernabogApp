@@ -1,0 +1,36 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Bestiary.Categories.IndexModel
+
+@{
+    ViewData["Title"] = "Категории существ Бестиария";
+}
+
+<div class="d-flex flex-row justify-content-between">
+    <h1>Категории существ Бестиария</h1>
+    <a asp-page="../Index">
+        <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+</div>
+<table class="table">
+    <thead class="table-dark sticky-top">
+        <tr>
+            <th class="rounded-start">
+                @Html.DisplayNameFor(model => model.MonsterCategory[0].Name)
+            </th>
+            <th class="rounded-end d-flex flex-row justify-content-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MonsterCategory) {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td class="d-flex flex-row justify-content-end">
+                <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark align-sel me-1"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

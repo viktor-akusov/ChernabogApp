@@ -4,9 +4,13 @@
 @{
     ViewData["Title"] = "Бестиарий";
 }
+<div class="d-flex flex-row justify-content-between">
+    <h1>Бестиарий</h1>
 
-<h1>Бестиарий</h1>
-
+    <a asp-page="./Categories/Index" class="nav nav-item">
+        Редактировать категории существ
+    </a>
+</div>
 <table class="table table-hover">
     <thead class="table-dark sticky-top">
         <tr>

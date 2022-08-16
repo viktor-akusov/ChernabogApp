@@ -1,0 +1,30 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Bestiary.Categories.EditModel
+
+@{
+    ViewData["Title"] = "Редактировать категорию \"" + Model.MonsterCategory.Name + "\"";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MonsterCategory.Id" />
+            <div class="form-group">
+                <label asp-for="MonsterCategory.Name" class="control-label"></label>
+                <input asp-for="MonsterCategory.Name" class="form-control" />
+                <span asp-validation-for="MonsterCategory.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex flex-row justify-content-between pt-2 align-content-stretch">
+                <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,17 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Bestiary.Categories.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить категорию \"" + Model.MonsterCategory.Name + "\"";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Вы уверены, что хотите удалить категорию "@Model.MonsterCategory.Name"?</h3>
+<div>
+    <form method="post" class="d-flex flex-row justify-content-between">
+        <input type="hidden" asp-for="MonsterCategory.Id" />
+        <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+        <input type="submit" value="Удалить" class="btn btn-danger rounded-end" />
+    </form>
+</div>
