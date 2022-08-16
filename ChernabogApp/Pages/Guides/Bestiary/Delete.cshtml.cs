@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ChernabogApp.Data;
 using ChernabogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ChernabogApp.Pages.Guides.Bestiary
 {
+    [Authorize(Roles = "Admin, Editor")]
     public class DeleteModel : PageModel
     {
         private readonly ChernabogApp.Data.ChernabogAppContext _context;

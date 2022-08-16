@@ -6,10 +6,12 @@
 }
 <div class="d-flex flex-row justify-content-between">
     <h1>Бестиарий</h1>
-
-    <a asp-page="./Categories/Index" class="nav nav-item">
-        Редактировать категории существ
-    </a>
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+    {
+        <a asp-page="./Categories/Index" class="nav nav-item">
+            Редактировать категории существ
+        </a>
+    }
 </div>
 <form asp-page="./Index" method="get">
     <div id="search-form" class="form-actions no-color">
@@ -58,10 +60,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Monster[0].Attack)
             </th>
-            <th>
+            <th class="@(User.IsInRole("Admin") || User.IsInRole("Editor") ? null : "rounded-end")">
                 @Html.DisplayNameFor(model => model.Monster[0].Damage)
             </th>
-            <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+            @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+            {
+                <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -96,10 +101,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Damage)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
-            </td>
+            @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+            {
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                </td>
+            }
         </tr>
 }
     </tbody>

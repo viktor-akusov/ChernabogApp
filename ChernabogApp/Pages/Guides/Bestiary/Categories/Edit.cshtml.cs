@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ChernabogApp.Data;
 using ChernabogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ChernabogApp.Pages.Guides.Bestiary.Categories
 {
+    [Authorize(Roles = "Admin, Editor")]
     public class EditModel : PageModel
     {
         private readonly ChernabogApp.Data.ChernabogAppContext _context;
