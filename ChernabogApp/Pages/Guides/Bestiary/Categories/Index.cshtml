@@ -11,13 +11,16 @@
         <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
     </a>
 </div>
-<table class="table">
+<table class="table table-hover">
     <thead class="table-dark sticky-top">
         <tr>
             <th class="rounded-start">
                 @Html.DisplayNameFor(model => model.MonsterCategory[0].Name)
             </th>
-            <th class="rounded-end d-flex flex-row justify-content-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light"></i></a></th>
+            <th style="text-align: justify-all;" class="w-75">
+                @Html.DisplayNameFor(model => model.MonsterCategory[0].Description)
+            </th>
+            <th class="rounded-end"><a asp-page="Create"><i class="fa fa-add btn btn-outline-light float-end"></i></a></th>
         </tr>
     </thead>
     <tbody>
@@ -26,9 +29,14 @@
             <td>
                 @item.Name
             </td>
-            <td class="d-flex flex-row justify-content-end">
-                <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark align-sel me-1"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                <div class="float-end">
+                    <a asp-page="./Edit" asp-route-id="@item.Id" title="Редактировать" class="btn btn-dark"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" title="Удалить" class="btn btn-danger"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                </div>
             </td>
         </tr>
 }

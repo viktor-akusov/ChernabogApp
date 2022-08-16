@@ -100,10 +100,9 @@ namespace ChernabogApp.Models
         [Required]
         [DisplayName("Урон")]
         public string Damage { get; set; } = string.Empty;
-        [Required]
         [DataType(DataType.MultilineText)]
         [DisplayName("Описание")]
-        public string Description { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
