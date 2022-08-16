@@ -17,6 +17,7 @@ namespace ChernabogApp.Pages.Guides.Bestiary
         public CreateModel(ChernabogApp.Data.ChernabogAppContext context)
         {
             _context = context;
+            Categories = new SelectList(context.MonsterCategory, nameof(MonsterCategory.Id), nameof(MonsterCategory.Name));
         }
 
         public IActionResult OnGet()
@@ -26,6 +27,7 @@ namespace ChernabogApp.Pages.Guides.Bestiary
 
         [BindProperty]
         public Monster Monster { get; set; } = default!;
+        public SelectList Categories { get; set; } = default!;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD

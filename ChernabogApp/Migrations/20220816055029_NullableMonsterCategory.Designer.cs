@@ -3,6 +3,7 @@ using System;
 using ChernabogApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChernabogApp.Migrations
 {
     [DbContext(typeof(ChernabogAppContext))]
-    partial class ChernabogAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220816055029_NullableMonsterCategory")]
+    partial class NullableMonsterCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,9 +53,6 @@ namespace ChernabogApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("Fly")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("MaximalHitDice")
                         .HasColumnType("bigint");
 
@@ -71,12 +70,6 @@ namespace ChernabogApp.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<long>("Skill")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("Swim")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("Teleport")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");

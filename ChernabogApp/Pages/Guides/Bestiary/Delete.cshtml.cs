@@ -20,7 +20,8 @@ namespace ChernabogApp.Pages.Guides.Bestiary
         }
 
         [BindProperty]
-      public Monster Monster { get; set; } = default!;
+        public Monster Monster { get; set; } = default!;
+        public MonsterCategory MonsterCategory { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
@@ -35,9 +36,18 @@ namespace ChernabogApp.Pages.Guides.Bestiary
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Monster = monster;
+            }
+            if (monster.CategoryId is null)
+            {
+                return Page();
+            }
+            var category = await _context.MonsterCategory.FirstOrDefaultAsync(c => c.Id == monster.CategoryId);
+            if (category is not null)
+            {
+                MonsterCategory = category;
             }
             return Page();
         }

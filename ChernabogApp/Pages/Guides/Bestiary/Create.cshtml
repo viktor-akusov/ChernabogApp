@@ -19,6 +19,13 @@
                 <span asp-validation-for="Monster.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Monster.CategoryId" class="control-label"></label>
+                <select asp-for="Monster.CategoryId" asp-items="Model.Categories" class="form-control">
+                    <option>---</option>
+                </select>
+                <span asp-validation-for="Monster.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Monster.MinimalHitDice" class="control-label"></label>
                 <input asp-for="Monster.MinimalHitDice" class="form-control" />
                 <span asp-validation-for="Monster.MinimalHitDice" class="text-danger"></span>
@@ -47,6 +54,21 @@
                 <label asp-for="Monster.Motion" class="control-label"></label>
                 <input asp-for="Monster.Motion" class="form-control" />
                 <span asp-validation-for="Monster.Motion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Swim" class="control-label"></label>
+                <input asp-for="Monster.Swim" class="form-control" />
+                <span asp-validation-for="Monster.Swim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Fly" class="control-label"></label>
+                <input asp-for="Monster.Fly" class="form-control" />
+                <span asp-validation-for="Monster.Fly" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monster.Teleport" class="control-label"></label>
+                <input asp-for="Monster.Teleport" class="form-control" />
+                <span asp-validation-for="Monster.Teleport" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Monster.BattleSpirit" class="control-label"></label>

@@ -2,30 +2,18 @@
 @model ChernabogApp.Pages.Guides.Bestiary.DetailsModel
 
 @{
-    ViewData["Title"] = "Существо - " + Model.Monster.Name.ToString();
+    ViewData["Title"] = "Существо - " + Model.Monster.DisplayName;
 }
 
 <div>
-    <h4>Существо - @Html.DisplayFor(model => model.Monster.Name)</h4>
+    <h4>Существо - @Model.Monster.DisplayName</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Monster.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Monster.Name)
-        </dd>
         <dt class="col-sm-2">
             Кость здоровья
         </dt>
         <dd class="col-sm-10">
-            @if (Model.Monster.MinimalHitDice != Model.Monster.MaximalHitDice)
-            {
-                <p>@Html.DisplayFor(model => model.Monster.MinimalHitDice) - @Html.DisplayFor(model => model.Monster.MaximalHitDice)</p>
-            } else
-            {
-                @Html.DisplayFor(model => model.Monster.MaximalHitDice)
-            }
+            @Model.Monster.HitDice
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Monster.ArmorClass)
@@ -49,7 +37,7 @@
             @Html.DisplayNameFor(model => model.Monster.Motion)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Monster.Motion)
+            @Html.DisplayFor(model => model.Monster.Movement)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Monster.BattleSpirit)

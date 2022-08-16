@@ -20,12 +20,17 @@ namespace ChernabogApp.Pages.Guides.Bestiary
         }
 
         public IList<Monster> Monster { get;set; } = default!;
+        public IList<MonsterCategory> MonsterCategory { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.Monster != null)
             {
                 Monster = await _context.Monster.ToListAsync();
+            }
+            if (_context.MonsterCategory != null)
+            {
+                MonsterCategory = await _context.MonsterCategory.ToListAsync();
             }
         }
     }

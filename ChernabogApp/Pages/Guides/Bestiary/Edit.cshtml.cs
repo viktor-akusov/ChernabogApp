@@ -18,10 +18,12 @@ namespace ChernabogApp.Pages.Guides.Bestiary
         public EditModel(ChernabogApp.Data.ChernabogAppContext context)
         {
             _context = context;
+            Categories = new SelectList(context.MonsterCategory, nameof(MonsterCategory.Id), nameof(MonsterCategory.Name));
         }
 
         [BindProperty]
         public Monster Monster { get; set; } = default!;
+        public SelectList Categories { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
@@ -35,6 +37,7 @@ namespace ChernabogApp.Pages.Guides.Bestiary
             {
                 return NotFound();
             }
+            
             Monster = monster;
             return Page();
         }
