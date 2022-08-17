@@ -44,7 +44,7 @@ namespace ChernabogApp.Areas.Identity.Pages.Account
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Спасибо за подтверждения вашего emal." : "Ошибка подтверждения email.";
+            StatusMessage = result.Succeeded ? "РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РІР°С€РµРіРѕ emal." : "РћС€РёР±РєР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ email.";
             return Page();
         }
     }

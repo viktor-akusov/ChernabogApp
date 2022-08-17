@@ -74,7 +74,7 @@ namespace ChernabogApp.Areas.Identity.Pages.Account
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(Configuration["Email:FromName"], Configuration["Email:FromEmail"]));
             message.To.Add(new MailboxAddress(user.UserName, Email));
-            message.Subject = "Активация аккаунта";
+            message.Subject = "РђРєС‚РёРІР°С†РёСЏ Р°РєРєР°СѓРЅС‚Р°";
 
             message.Body = new TextPart("plain")
             {
