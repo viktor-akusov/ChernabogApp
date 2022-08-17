@@ -14,13 +14,21 @@ namespace ChernabogApp.Data
         public ChernabogAppContext (DbContextOptions<ChernabogAppContext> options)
             : base(options)
         {
+            
         }
+
 
         public DbSet<ChernabogApp.Models.Spell> Spell { get; set; } = default!;
 
         public DbSet<ChernabogApp.Models.Monster>? Monster { get; set; }
 
         public DbSet<ChernabogApp.Models.MonsterCategory>? MonsterCategory { get; set; }
+
+        public DbSet<ChernabogApp.Models.Race>? Race { get; set; }
+
+        public DbSet<ChernabogApp.Models.CharClass>? CharClass { get; set; }
+
+        public DbSet<ChernabogApp.Models.Character>? Character { get; set; }
 
     }
 }

@@ -1,0 +1,30 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.CharClasses.DetailsModel
+
+@{
+    ViewData["Title"] = "Заклинание - " + Model.CharClass.Name.ToString();
+}
+
+<div>
+    <h4>Класс - @Html.DisplayFor(model => model.CharClass.Name)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CharClass.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.CharClass.Description)
+        </dd>
+    </dl>
+</div>
+<div class="d-flex flex-row justify-content-left gap-2">
+    <a asp-page="./Index">
+        <i class="btn btn-dark fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.CharClass?.Id">
+            <i class="btn btn-dark fa fa-edit" aria-hidden="true"></i>
+        </a>
+    }
+</div>

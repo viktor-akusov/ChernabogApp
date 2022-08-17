@@ -3,6 +3,7 @@ using System;
 using ChernabogApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChernabogApp.Migrations
 {
     [DbContext(typeof(ChernabogAppContext))]
-    partial class ChernabogAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220817065054_CharClasses")]
+    partial class CharClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,73 +23,6 @@ namespace ChernabogApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ChernabogApp.Models.Character", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CharClassId")
-                        .HasColumnType("integer");
-
-                    b.Property<byte>("Charisma")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Constituiton")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Dexterity")
-                        .HasColumnType("smallint");
-
-                    b.Property<long>("Experience")
-                        .HasColumnType("bigint");
-
-                    b.Property<byte>("Hunger")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Intellgence")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Level")
-                        .HasColumnType("smallint");
-
-                    b.Property<long>("Magnificence")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Purporse")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("RaceId")
-                        .HasColumnType("integer");
-
-                    b.Property<byte>("RerollsMax")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Strength")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Thirst")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Wisdom")
-                        .HasColumnType("smallint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharClassId");
-
-                    b.HasIndex("RaceId");
-
-                    b.ToTable("Character");
-                });
 
             modelBuilder.Entity("ChernabogApp.Models.CharClass", b =>
                 {
@@ -448,25 +383,6 @@ namespace ChernabogApp.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ChernabogApp.Models.Character", b =>
-                {
-                    b.HasOne("ChernabogApp.Models.CharClass", "CharClass")
-                        .WithMany()
-                        .HasForeignKey("CharClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChernabogApp.Models.Race", "Race")
-                        .WithMany()
-                        .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CharClass");
-
-                    b.Navigation("Race");
                 });
 
             modelBuilder.Entity("ChernabogApp.Models.Monster", b =>

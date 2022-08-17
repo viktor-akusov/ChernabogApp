@@ -1,0 +1,26 @@
+﻿@page
+@model ChernabogApp.Pages.Guides.Races.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить народ";
+}
+
+<h1>Удалить народ "@Html.DisplayFor(model => model.Race.Name)"</h1>
+
+<h3>Вы уверены, что хотите удалить этот народ?</h3>
+<div>
+    <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Race.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Race.Description)
+        </dd>
+    </dl>
+    
+    <form method="post" class="d-flex flex-row justify-content-between">
+        <input type="hidden" asp-for="Race.Id" />
+        <a asp-page="./Index"><i class="btn btn-dark fa fa-arrow-left rounded-start" aria-hidden="true"></i></a>
+        <input type="submit" value="Удалить" class="btn btn-danger rounded-end" />
+    </form>
+</div>

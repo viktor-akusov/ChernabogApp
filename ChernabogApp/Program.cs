@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ChernabogApp.Data;
 using Microsoft.AspNetCore.Identity;
 using ChernabogApp.Areas.Identity.Data;
+using ChernabogApp.Populators;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,8 +13,17 @@ builder.Services.AddDbContext<ChernabogAppContext>(options =>
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ChernabogAppContext>();
-
 var app = builder.Build();
+
+using(var scope = app.Services.CreateScope()) {
+    var context = scope.ServiceProvider.GetService<ChernabogAppContext>();
+
+    var classPopulator = new CharClassPopulate(context, context.CharClass);
+    var racePopulator = new RacePopulate(context, context.Race);
+
+    classPopulator.Seed().Wait();
+    racePopulator.Seed().Wait();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -24,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();

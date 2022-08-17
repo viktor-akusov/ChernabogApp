@@ -1,0 +1,110 @@
+﻿@page
+@model ChernabogApp.Pages.Characters.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Character</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Character.Id" />
+            <div class="form-group">
+                <label asp-for="Character.Name" class="control-label"></label>
+                <input asp-for="Character.Name" class="form-control" />
+                <span asp-validation-for="Character.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.RaceId" class="control-label"></label>
+                <select asp-for="Character.RaceId" class="form-control" asp-items="ViewBag.RaceId"></select>
+                <span asp-validation-for="Character.RaceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.CharClassId" class="control-label"></label>
+                <select asp-for="Character.CharClassId" class="form-control" asp-items="ViewBag.CharClassId"></select>
+                <span asp-validation-for="Character.CharClassId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Purporse" class="control-label"></label>
+                <input asp-for="Character.Purporse" class="form-control" />
+                <span asp-validation-for="Character.Purporse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Level" class="control-label"></label>
+                <input asp-for="Character.Level" class="form-control" />
+                <span asp-validation-for="Character.Level" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Experience" class="control-label"></label>
+                <input asp-for="Character.Experience" class="form-control" />
+                <span asp-validation-for="Character.Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Magnificence" class="control-label"></label>
+                <input asp-for="Character.Magnificence" class="form-control" />
+                <span asp-validation-for="Character.Magnificence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.RerollsMax" class="control-label"></label>
+                <input asp-for="Character.RerollsMax" class="form-control" />
+                <span asp-validation-for="Character.RerollsMax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Hunger" class="control-label"></label>
+                <input asp-for="Character.Hunger" class="form-control" />
+                <span asp-validation-for="Character.Hunger" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Thirst" class="control-label"></label>
+                <input asp-for="Character.Thirst" class="form-control" />
+                <span asp-validation-for="Character.Thirst" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Strength" class="control-label"></label>
+                <input asp-for="Character.Strength" class="form-control" />
+                <span asp-validation-for="Character.Strength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Dexterity" class="control-label"></label>
+                <input asp-for="Character.Dexterity" class="form-control" />
+                <span asp-validation-for="Character.Dexterity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Constituiton" class="control-label"></label>
+                <input asp-for="Character.Constituiton" class="form-control" />
+                <span asp-validation-for="Character.Constituiton" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Wisdom" class="control-label"></label>
+                <input asp-for="Character.Wisdom" class="form-control" />
+                <span asp-validation-for="Character.Wisdom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Intellgence" class="control-label"></label>
+                <input asp-for="Character.Intellgence" class="form-control" />
+                <span asp-validation-for="Character.Intellgence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Character.Charisma" class="control-label"></label>
+                <input asp-for="Character.Charisma" class="form-control" />
+                <span asp-validation-for="Character.Charisma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
